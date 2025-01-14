@@ -19,12 +19,27 @@ def view():
                 print(f"{item:^10}",end=' | ')
             print()# turns each row into a new line
 
-    elif view_choice.strip().lower()[0]=='p':
+    if view_choice.strip().lower()[0]=='p':
         priority_choice=input("Which priority?> ")
         if priority_choice.strip().lower()[0]=='h':
             for row in do_list:
-                if row[2].strip().lower()=='high':
-                    print(row)
+                for item in row:
+                    if row[2].strip().lower()[0]=='h':
+                        print(f"{item:^10}", end=' | ')
+                print()
+        elif priority_choice.strip().lower()[0]=='m':
+            for row in do_list:
+                for item in row:
+                    if row[2].strip().lower()[0]=='m':
+                        print(f"{item:^10}", end=' | ')
+                print() 
+        elif priority_choice.strip().lower()[0]=='l':
+            for row in do_list:
+                for item in row:
+                    if row[2].strip().lower()[0]=='l':
+                        print(f"{item:^10}", end=' | ')
+                print()  
+
 
 while True:
     choice=input("Do you want to add,remove,view or edit:> ")
