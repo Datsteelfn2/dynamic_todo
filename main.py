@@ -9,11 +9,17 @@ def add():
     do_list.append(row)
 
 def remove():
-    pass
-
+    remove_what=input('Name the task you want to remove:> ')
+    for row in do_list:
+        if remove_what.strip().lower()==row[0].strip().lower():
+            do_list.remove(row)
+        else:
+            print("name doesnt exist")
 def view():
     view_choice=input("Do you want to view all todos or  based on priority:> ")
     if view_choice.strip().lower()[0]=='a':
+        if not do_list:
+            print("List is empty")
         for row in do_list:
             for item in row:
                 print(f"{item:^10}",end=' | ')
