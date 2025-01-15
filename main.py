@@ -45,8 +45,18 @@ def view():
                     if row[2].strip().lower()[0]=='l':
                         print(f"{item:^10}", end=' | ')
                 print()  
-
-
+def edit():
+    what_edit=input("Name what task you want to edit:> ")
+    for row in do_list:
+        if what_edit.strip().lower()==row[0].strip().lower():
+            do_list.remove(row)
+            task=input("What task do you want to add:> ")
+            due=input("When is that task due:> ")
+            priority=input("What is the priority:> ")
+            row=[task,due,priority]
+            do_list.append(row)
+        elif what_edit.strip().lower()!=row[0].strip().lower():
+            print('Not a task name')
 while True:
     choice=input("Do you want to add,remove,view or edit:> ")
     if choice.strip().lower()[0]=='a':
@@ -55,6 +65,8 @@ while True:
         remove()
     elif choice.strip().lower()[0]=='v':
         view()
+    elif choice.strip().lower()[0]=='e':
+        edit()
     exit=input('do you want to exit:> ')
-    if exit.strip()=='y':
+    if exit.strip().lower()[0]=='y':
         break
